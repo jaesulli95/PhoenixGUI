@@ -3,16 +3,23 @@
 
 #include "UI/PhoenixBaseWidget.h"
 #include "UI/PhoenixScreen.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetInputLibrary.h"
+#include "InputCoreTypes.h"
+#include "Input/Reply.h"
 
-void UPhoenixBaseWidget::SetParent(UPhoenixScreen* Parent)
+FReply UPhoenixBaseWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
 {
-	ParentScreen = Parent;
-	if (ParentScreen) {
-		UE_LOG(LogTemp, Warning, TEXT("Parent Screen Set"));
+	if (!bSelectable) {
+		return FReply::Handled();
 	}
-}
 
-UPhoenixScreen* UPhoenixBaseWidget::GetParentScreen()
-{
-	return ParentScreen;
+	APlayerController* Controller = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+	if (Controller) {
+		if ((Controller->Tags.Find("EDIT") != INDEX_NONE) &&
+			UKismetInputLibrary::PointerEvent_IsMouseButtonDown(InMouseEvent, EKeys::LeftMouseButton)) {
+			UE_LOG(LogTemp, Warning, TEXT("This Is Being Clicked"))
+		}
+	}
+	return FReply::Handled();
 }

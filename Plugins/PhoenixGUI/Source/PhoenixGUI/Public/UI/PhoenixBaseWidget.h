@@ -9,6 +9,9 @@
 /**
  * 
  */
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FWidgetSelectedDelegate, UUserWidget*, Widget);
+
 UCLASS(ABSTRACT)
 class PHOENIXGUI_API UPhoenixBaseWidget : public UUserWidget
 {
@@ -17,14 +20,17 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Data")
 	FName Name;
 
-	UFUNCTION(BlueprintCallable, Category="Widget-Utility")
-	void SetParent(class UPhoenixScreen* Parent);
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Data")
+	FString WidgetDisplayName;
 
-	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Widget-Utility")
-	UPhoenixScreen* GetParentScreen();
+	UPROPERTY(BlueprintReadWrite, Category = "Data")
+	bool bDisplay = true;
 
+	UPROPERTY(BlueprintAssignable, BlueprintCallable)
+	FWidgetSelectedDelegate OnWidgetSelected;
 
-private:
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+	bool bSelectable = true;
 
-	class UPhoenixScreen* ParentScreen;
+	virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 };

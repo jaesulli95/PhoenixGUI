@@ -43,9 +43,8 @@ UCLASS()
 class PHOENIXGUI_API UPhoenixWidget : public UPhoenixBaseWidget
 {
 	GENERATED_BODY()
-
 public:
-	UPROPERTY(BlueprintReadOnly, meta = (BindWidgetOptional), Category="Data")
+	/*UPROPERTY(BlueprintReadOnly, meta = (BindWidgetOptional), Category="Data")
 	TObjectPtr<UImage> SelectedEditImage;
 
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Data")
@@ -70,5 +69,5 @@ public:
 	void GuiFeedbackSetSelectedWidget(bool bSelected);
 
 	UFUNCTION(BlueprintCallable, Category = "Widget-Utility")
-	void SetDisplay(bool bShouldDisplay);
+	void SetDisplay(bool bShouldDisplay);*/
 };

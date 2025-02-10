@@ -12,7 +12,7 @@
  */
 
 UCLASS()
-class PHOENIXGUI_API UPhoenixWindow : public UPhoenixBaseWidget
+class PHOENIXGUI_API UPhoenixWindow : public UUserWidget
 {
 	GENERATED_BODY()
 
@@ -50,7 +50,6 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category="Window-Utility")
 	void CloseWindow();
 
-	//virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 	class UPhoenixScreen* GetParentScreen();
 private:
 	class UPhoenixScreen* ParentScreen;

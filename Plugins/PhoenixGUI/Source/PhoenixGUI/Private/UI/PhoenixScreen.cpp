@@ -43,21 +43,6 @@ void UPhoenixScreen::SetEditState(EGuiState NewGuiState)
     BP_GuiStateChanged(GuiState);
 }
 
-UPhoenixWidget* UPhoenixScreen::GetCurrentEditWidget()
-{
-    return CurrentEditingWidget;
-}
-
-void UPhoenixScreen::SetCurrentEditWidget(UPhoenixWidget* EditWidget)
-{
-    if (GuiState != EGuiState::EGS_Editing) {
-        return;
-    }
-
-    CurrentEditingWidget = EditWidget;
-    BP_EditWidgetSelected(CurrentEditingWidget);
-}
-
 void UPhoenixScreen::AddToggleableWindow(IToggleable* ToggleableWindow)
 {
     Toggleables.Add(ToggleableWindow);

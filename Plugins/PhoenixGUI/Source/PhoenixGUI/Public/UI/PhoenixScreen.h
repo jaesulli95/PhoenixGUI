@@ -12,8 +12,10 @@
  * 
  */
 
+class UPhoenixWidget;
+
 UCLASS()
-class PHOENIXGUI_API UPhoenixScreen : public UPhoenixBaseWidget
+class PHOENIXGUI_API UPhoenixScreen : public UUserWidget
 {
 	GENERATED_BODY()
 
@@ -52,17 +54,6 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Screen-Utility")
 	void BP_GuiStateChanged(EGuiState State);
 
-	UPROPERTY(BlueprintReadOnly, Category="Data")
-	class UPhoenixWidget* CurrentEditingWidget;
-
-	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Screen-Utility")
-	class UPhoenixWidget* GetCurrentEditWidget();
-
-	UFUNCTION(BlueprintCallable, Category = "Screen-Utility")
-	void SetCurrentEditWidget(class UPhoenixWidget* EditWidget);
-
-	UFUNCTION(BlueprintImplementableEvent, Category = "Screen-Utility")
-	void BP_EditWidgetSelected(const class UPhoenixWidget* PhoenixWidget);
 
 private:
 	TMap<FName, UPhoenixWindow*> PhoenixWindowsMap;
