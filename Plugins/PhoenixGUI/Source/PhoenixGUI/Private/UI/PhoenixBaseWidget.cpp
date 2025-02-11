@@ -18,7 +18,7 @@ FReply UPhoenixBaseWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, 
 	if (Controller) {
 		if ((Controller->Tags.Find("EDIT") != INDEX_NONE) &&
 			UKismetInputLibrary::PointerEvent_IsMouseButtonDown(InMouseEvent, EKeys::LeftMouseButton)) {
-			UE_LOG(LogTemp, Warning, TEXT("This Is Being Clicked"))
+			OnWidgetSelected.Broadcast(this);
 		}
 	}
 	return FReply::Handled();

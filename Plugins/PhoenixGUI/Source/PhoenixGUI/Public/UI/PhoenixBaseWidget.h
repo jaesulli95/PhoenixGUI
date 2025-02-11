@@ -10,7 +10,7 @@
  * 
  */
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FWidgetSelectedDelegate, UUserWidget*, Widget);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FWidgetSelectedDelegate, UPhoenixBaseWidget*, Widget);
 
 UCLASS(ABSTRACT)
 class PHOENIXGUI_API UPhoenixBaseWidget : public UUserWidget
@@ -20,7 +20,7 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Data")
 	FName Name;
 
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Data")
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Data")
 	FString WidgetDisplayName;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Data")

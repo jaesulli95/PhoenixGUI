@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UI/PhoenixBaseWidget.h"
+#include "Blueprint/UserWidget.h"
 #include "Interfaces/Toggleable.h"
 #include "PhoenixWindow.generated.h"
 
@@ -17,8 +18,6 @@ class PHOENIXGUI_API UPhoenixWindow : public UUserWidget
 	GENERATED_BODY()
 
 public:
-
-	UPhoenixWindow();
 
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, meta = (InstanceEditable = true), Category="Data")
 	bool bIsPersistent = true;
@@ -49,8 +48,4 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category="Window-Utility")
 	void CloseWindow();
-
-	class UPhoenixScreen* GetParentScreen();
-private:
-	class UPhoenixScreen* ParentScreen;
 };

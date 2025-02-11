@@ -18,10 +18,10 @@ void UPhoenixScreen::ToggleWindow(FName WindowLookupName)
 {
     UPhoenixWindow* _Window = GetWindow(WindowLookupName);
     if (_Window) {
-        if (_Window->Visibility == ESlateVisibility::Visible) {
+        if (_Window->GetVisibility() == ESlateVisibility::Visible) {
             _Window->CloseWindow();
         }
-        else if (_Window->Visibility == ESlateVisibility::Hidden) {
+        else if (_Window->GetVisibility() == ESlateVisibility::Hidden) {
             _Window->OpenWindow();
         }
     }
@@ -34,6 +34,7 @@ void UPhoenixScreen::AddWindow(UPhoenixWindow* Window)
 
 void UPhoenixScreen::CloseAllWindows()
 {
+    //Cycle through Windows Close all Windows
 
 }
 
