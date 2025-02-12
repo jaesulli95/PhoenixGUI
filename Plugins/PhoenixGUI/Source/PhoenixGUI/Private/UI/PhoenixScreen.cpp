@@ -44,6 +44,10 @@ void UPhoenixScreen::SetEditState(EGuiState NewGuiState)
     BP_GuiStateChanged(GuiState);
 }
 
+void UPhoenixScreen::SaveLoadout(TArray<class UPhoenixBaseWidget> WidgetsToSave)
+{
+}
+
 void UPhoenixScreen::AddToggleableWindow(IToggleable* ToggleableWindow)
 {
     Toggleables.Add(ToggleableWindow);

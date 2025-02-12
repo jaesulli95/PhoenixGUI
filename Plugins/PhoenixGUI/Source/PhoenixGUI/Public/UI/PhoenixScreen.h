@@ -54,6 +54,8 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Screen-Utility")
 	void BP_GuiStateChanged(EGuiState State);
 
+	UFUNCTION(BlueprintCallable, Category="Screen-Utility")
+	void SaveLoadout(TArray<class UPhoenixBaseWidget> WidgetsToSave);
 
 private:
 	TMap<FName, UPhoenixWindow*> PhoenixWindowsMap;
