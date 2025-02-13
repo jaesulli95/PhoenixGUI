@@ -33,16 +33,32 @@ void UPhoenixScreen::AddWindow(UPhoenixWindow* Window)
     PhoenixWindowsMap.Add(Window->WindowLookupName, Window);
 }
 
+void UPhoenixScreen::ModifyOpenWindows(FName WindowName, bool bIsOpen)
+{
+    if (bIsOpen) {
+        OpenedWindows.Add(WindowName);
+        return;
+    }
+    OpenedWindows.Remove(WindowName);
+}
+
 void UPhoenixScreen::CloseAllWindows()
 {
     //Cycle through Windows Close all Windows
-
+    for (FName WindowName : OpenedWindows) {
+        UPhoenixWindow* WindowRef = GetWindow(WindowName);
+        if (WindowRef) {
+            WindowRef->CloseWindow();
+        }
+    }
 }
 
 void UPhoenixScreen::SetEditState(EGuiState NewGuiState)
 {
-    GuiState = NewGuiState;
-    BP_GuiStateChanged(GuiState);
+    if (bIsEditable) {
+        GuiState = NewGuiState;
+        BP_GuiStateChanged(GuiState);
+    }
 }
 
 TMap<FName, FWidgetLayoutData> UPhoenixScreen::GetLayoutData(TArray<UPhoenixBaseWidget*> WidgetsToSave)
@@ -54,16 +70,11 @@ TMap<FName, FWidgetLayoutData> UPhoenixScreen::GetLayoutData(TArray<UPhoenixBase
         LayoutData.Add(WidgetsToSave[i]->Name,
             FWidgetLayoutData(TmpCanvas->GetAnchors(), TmpCanvas->GetPosition(), TmpCanvas->GetAlignment()));
     }
-    UE_LOG(LogTemp, Warning, TEXT("Number of Widgets Saved in Layout Data: %d"), LayoutData.Num());
     return LayoutData;
 }
 
-void UPhoenixScreen::AddToggleableWindow(IToggleable* ToggleableWindow)
+void UPhoenixScreen::SetLayoutData(TMap<FName, FWidgetLayoutData> LoadoutLayoutData)
 {
-    Toggleables.Add(ToggleableWindow);
+
 }
 
-void UPhoenixScreen::RemoveToggleableWindow(IToggleable* ToggleableWindow)
-{
-    Toggleables.Remove(ToggleableWindow);
-}

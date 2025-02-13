@@ -56,9 +56,18 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Data")
 	FName PhoenixScreenName = FName("<PhoenixScreen>");
 
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Data")
+	bool bIsEditable = true;
+
 	//Widgets
 	UPROPERTY(BlueprintReadOnly, Category="Data|Widgets")
 	TMap<FName, UPhoenixBaseWidget*> PhoenixWidgets;
+
+	UPROPERTY(BlueprintReadOnly, Category="Data|Widgets")
+	TMap<FName, UPhoenixWindow*> PhoenixWindowsMap;
+
+	UPROPERTY(BlueprintReadOnly, Category="Data|Widgets")
+	TArray<FName> OpenedWindows;
 
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Data")
 	EEditGuiMode GuiMode = EEditGuiMode::EGM_Anchor; // By Default Use Anchor
@@ -75,6 +84,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Screen-Utility")
 	void AddWindow(class UPhoenixWindow* Window);
 
+	UFUNCTION(BlueprintCallable, Category="Screen-Utility")
+	void ModifyOpenWindows(FName WindowName, bool bIsOpen);
+
 	UFUNCTION(BlueprintCallable, Category = "Screen-Utility")
 	void CloseAllWindows();
 
@@ -84,12 +96,11 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Screen-Utility")
 	void BP_GuiStateChanged(EGuiState State);
 
+
+	//Get Layout Data of Current Loadout and return. Will be used for saving the Layout Loadout
 	UFUNCTION(BlueprintCallable, Category="Screen-Utility")
 	TMap<FName, FWidgetLayoutData> GetLayoutData(TArray<UPhoenixBaseWidget*> WidgetsToSave);
 
-private:
-	TMap<FName, UPhoenixWindow*> PhoenixWindowsMap;
-	TArray<IToggleable*> Toggleables;
-	void AddToggleableWindow(IToggleable* ToggleableWindow);
-	void RemoveToggleableWindow(IToggleable* ToggleableWindow);
+	UFUNCTION(BlueprintCallable, Category="Screen-Utility")
+	void SetLayoutData(TMap<FName, FWidgetLayoutData> LoadoutLayoutData);
 };

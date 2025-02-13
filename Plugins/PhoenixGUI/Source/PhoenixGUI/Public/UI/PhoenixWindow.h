@@ -12,6 +12,9 @@
  * 
  */
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FWindowToggleDelegate, FName, WindowName , bool, bIsOpen);
+
+
 UCLASS()
 class PHOENIXGUI_API UPhoenixWindow : public UUserWidget
 {
@@ -22,7 +25,7 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, meta = (InstanceEditable = true), Category="Data")
 	bool bIsPersistent = true;
 
-	UPROPERTY(EditAnywhere, meta=(InstanceEditable=true), Category = "Data")
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, meta=(InstanceEditable=true), Category = "Data")
 	FName WindowLookupName;
 
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, meta = (InstanceEditable = true), Category = "Data")
@@ -42,6 +45,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category="Data|Sounds")
 	TObjectPtr<USoundBase> ToggleSound;
+
+	UPROPERTY(BlueprintAssignable, BlueprintCallable, Category="Window-Utility")
+	FWindowToggleDelegate WindowToggled;
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Window-Utility")
 	void OpenWindow();
