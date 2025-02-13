@@ -2,9 +2,10 @@
 
 
 #include "UI/PhoenixScreen.h"
-#include "UI/PhoenixWidget.h"
 #include "UI/PhoenixWindow.h"
 #include "Interfaces/Toggleable.h"
+#include "Blueprint/WidgetLayoutLibrary.h"
+#include "Components/CanvasPanelSlot.h"
 
 UPhoenixWindow* UPhoenixScreen::GetWindow(FName WindowLookupName)
 {
@@ -44,8 +45,17 @@ void UPhoenixScreen::SetEditState(EGuiState NewGuiState)
     BP_GuiStateChanged(GuiState);
 }
 
-void UPhoenixScreen::SaveLoadout(TArray<class UPhoenixBaseWidget> WidgetsToSave)
+TMap<FName, FWidgetLayoutData> UPhoenixScreen::GetLayoutData(TArray<UPhoenixBaseWidget*> WidgetsToSave)
 {
+    TMap<FName, FWidgetLayoutData> LayoutData;
+    int32 WidgetsNum = WidgetsToSave.Num();
+    for (int32 i = 0; i < WidgetsNum; i++) {
+        UCanvasPanelSlot* TmpCanvas = UWidgetLayoutLibrary::SlotAsCanvasSlot(WidgetsToSave[i]);
+        LayoutData.Add(WidgetsToSave[i]->Name,
+            FWidgetLayoutData(TmpCanvas->GetAnchors(), TmpCanvas->GetPosition(), TmpCanvas->GetAlignment()));
+    }
+    UE_LOG(LogTemp, Warning, TEXT("Number of Widgets Saved in Layout Data: %d"), LayoutData.Num());
+    return LayoutData;
 }
 
 void UPhoenixScreen::AddToggleableWindow(IToggleable* ToggleableWindow)

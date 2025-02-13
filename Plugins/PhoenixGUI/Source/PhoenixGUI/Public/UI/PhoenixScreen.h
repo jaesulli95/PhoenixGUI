@@ -14,6 +14,36 @@
 
 class UPhoenixWidget;
 
+USTRUCT(BlueprintType, Blueprintable)
+struct FWidgetLayoutData {
+	GENERATED_BODY()
+public:
+	/*
+	* Anchors
+	* Alignment
+	* Size
+	* Position
+	*/
+	UPROPERTY(BlueprintReadWrite, Category = "Anchor-Data")
+	FAnchors Anchors;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Anchor-Data")
+	FVector2D Position;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Anchor-Data")
+	FVector2D Alignment;
+
+	FWidgetLayoutData() {
+
+	}
+
+	FWidgetLayoutData(FAnchors V_Anchors, FVector2D V_Position, FVector2D V_Alignment) {
+		Anchors = V_Anchors;
+		Position = V_Position;
+		Alignment = V_Alignment;
+	}
+};
+
 UCLASS()
 class PHOENIXGUI_API UPhoenixScreen : public UUserWidget
 {
@@ -28,7 +58,7 @@ public:
 
 	//Widgets
 	UPROPERTY(BlueprintReadOnly, Category="Data|Widgets")
-	TMap<FName, UPhoenixWidget*> PhoenixWidgets;
+	TMap<FName, UPhoenixBaseWidget*> PhoenixWidgets;
 
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Data")
 	EEditGuiMode GuiMode = EEditGuiMode::EGM_Anchor; // By Default Use Anchor
@@ -55,7 +85,7 @@ public:
 	void BP_GuiStateChanged(EGuiState State);
 
 	UFUNCTION(BlueprintCallable, Category="Screen-Utility")
-	void SaveLoadout(TArray<class UPhoenixBaseWidget> WidgetsToSave);
+	TMap<FName, FWidgetLayoutData> GetLayoutData(TArray<UPhoenixBaseWidget*> WidgetsToSave);
 
 private:
 	TMap<FName, UPhoenixWindow*> PhoenixWindowsMap;
