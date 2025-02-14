@@ -82,3 +82,10 @@ void UPhoenixScreen::SetLayoutData(TMap<FName, FWidgetLayoutData> LoadoutLayoutD
     }
 }
 
+TArray<UPhoenixBaseWidget*> UPhoenixScreen::GetScreenWidgets()
+{
+    TArray<UPhoenixBaseWidget*> WidgetsOnScreen;
+    PhoenixWidgets.GenerateValueArray(WidgetsOnScreen);
+    return WidgetsOnScreen;
+}
+
