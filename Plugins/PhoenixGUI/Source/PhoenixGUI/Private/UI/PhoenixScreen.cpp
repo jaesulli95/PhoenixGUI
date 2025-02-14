@@ -2,8 +2,8 @@
 
 
 #include "UI/PhoenixScreen.h"
-#include "UI/PhoenixWindow.h"
 #include "Interfaces/Toggleable.h"
+#include "UI/PhoenixBaseWidget.h"
 #include "Blueprint/WidgetLayoutLibrary.h"
 #include "Components/CanvasPanelSlot.h"
 
@@ -75,6 +75,10 @@ TMap<FName, FWidgetLayoutData> UPhoenixScreen::GetLayoutData(TArray<UPhoenixBase
 
 void UPhoenixScreen::SetLayoutData(TMap<FName, FWidgetLayoutData> LoadoutLayoutData)
 {
+    for (TPair<FName, FWidgetLayoutData> WData : LoadoutLayoutData) {
+        if (PhoenixWidgets.Contains(WData.Key)) {
 
+        }
+    }
 }
 

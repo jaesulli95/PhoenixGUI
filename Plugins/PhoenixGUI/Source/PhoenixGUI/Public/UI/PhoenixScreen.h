@@ -3,46 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UI/PhoenixBaseWidget.h"
-#include "PhoenixWindow.h"
 #include "Data/EditGuiMode.h"
+#include "UI/PhoenixWindow.h"
+#include "Data/WidgetLayoutData.h"
 #include "PhoenixScreen.generated.h"
 
 /**
  * 
  */
 
-class UPhoenixWidget;
-
-USTRUCT(BlueprintType, Blueprintable)
-struct FWidgetLayoutData {
-	GENERATED_BODY()
-public:
-	/*
-	* Anchors
-	* Alignment
-	* Size
-	* Position
-	*/
-	UPROPERTY(BlueprintReadWrite, Category = "Anchor-Data")
-	FAnchors Anchors;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Anchor-Data")
-	FVector2D Position;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Anchor-Data")
-	FVector2D Alignment;
-
-	FWidgetLayoutData() {
-
-	}
-
-	FWidgetLayoutData(FAnchors V_Anchors, FVector2D V_Position, FVector2D V_Alignment) {
-		Anchors = V_Anchors;
-		Position = V_Position;
-		Alignment = V_Alignment;
-	}
-};
+class UPhoenixBaseWidget;
 
 UCLASS()
 class PHOENIXGUI_API UPhoenixScreen : public UUserWidget

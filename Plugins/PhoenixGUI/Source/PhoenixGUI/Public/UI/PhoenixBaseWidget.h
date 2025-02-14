@@ -31,6 +31,9 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
 	bool bSelectable = true;
-
+	
 	virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
+
+	UFUNCTION(BlueprintCallable)
+	void ApplyWidgetLayoutData(struct FWidgetLayoutData Data);
 };

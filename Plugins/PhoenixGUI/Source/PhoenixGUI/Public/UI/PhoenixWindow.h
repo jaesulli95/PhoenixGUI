@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UI/PhoenixBaseWidget.h"
 #include "Blueprint/UserWidget.h"
 #include "Interfaces/Toggleable.h"
 #include "PhoenixWindow.generated.h"
