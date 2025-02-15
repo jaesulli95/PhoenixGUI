@@ -75,4 +75,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	TArray< UPhoenixBaseWidget*> GetScreenWidgets();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	bool AreWindowsOpen();
+
 };

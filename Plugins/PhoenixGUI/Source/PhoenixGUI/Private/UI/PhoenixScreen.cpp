@@ -75,9 +75,9 @@ TMap<FName, FWidgetLayoutData> UPhoenixScreen::GetLayoutData(TArray<UPhoenixBase
 
 void UPhoenixScreen::SetLayoutData(TMap<FName, FWidgetLayoutData> LoadoutLayoutData)
 {
-    for (TPair<FName, FWidgetLayoutData> WData : LoadoutLayoutData) {
+    for (const TPair<FName, FWidgetLayoutData> WData : LoadoutLayoutData) {
         if (PhoenixWidgets.Contains(WData.Key)) {
-
+            PhoenixWidgets[WData.Key]->ApplyWidgetLayoutData(WData.Value);
         }
     }
 }
@@ -87,5 +87,10 @@ TArray<UPhoenixBaseWidget*> UPhoenixScreen::GetScreenWidgets()
     TArray<UPhoenixBaseWidget*> WidgetsOnScreen;
     PhoenixWidgets.GenerateValueArray(WidgetsOnScreen);
     return WidgetsOnScreen;
+}
+
+bool UPhoenixScreen::AreWindowsOpen()
+{
+    return (OpenedWindows.Num() == 0);
 }
 

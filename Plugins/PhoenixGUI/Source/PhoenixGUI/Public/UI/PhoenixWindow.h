@@ -42,7 +42,7 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category = "Data")
 	FVector2D DragOffset = FVector2d(0.0, 0.0);
 
-	UPROPERTY(EditDefaultsOnly, Category="Data|Sounds")
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Data|Sounds")
 	TObjectPtr<USoundBase> ToggleSound;
 
 	UPROPERTY(BlueprintAssignable, BlueprintCallable, Category="Window-Utility")
