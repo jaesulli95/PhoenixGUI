@@ -9,7 +9,6 @@
 /**
  * 
  */
-
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FWidgetSelectedDelegate, UPhoenixBaseWidget*, Widget);
 
 UCLASS(ABSTRACT)
@@ -29,8 +28,11 @@ public:
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
 	FWidgetSelectedDelegate OnWidgetSelected;
 
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Data")
 	bool bSelectable = true;
+
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Data")
+	FVector2D ScaleLimits = FVector2D(.5, 2.0);
 	
 	virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 
