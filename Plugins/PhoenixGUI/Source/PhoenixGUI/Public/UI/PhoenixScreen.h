@@ -6,6 +6,7 @@
 #include "Data/EditGuiMode.h"
 #include "UI/PhoenixWindow.h"
 #include "Data/WidgetLayoutData.h"
+#include "GameplayTagContainer.h"
 #include "PhoenixScreen.generated.h"
 
 /**
@@ -38,6 +39,9 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category="Data|Widgets")
 	TArray<FName> OpenedWindows;
+
+	UPROPERTY(BlueprintReadOnly, Category="Data")
+	FGameplayTagContainer ScreenTags;
 
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Data")
 	EEditGuiMode GuiMode = EEditGuiMode::EGM_Anchor; // By Default Use Anchor
