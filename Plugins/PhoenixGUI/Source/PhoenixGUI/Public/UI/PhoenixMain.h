@@ -19,12 +19,22 @@ class PHOENIXGUI_API UPhoenixMain : public UUserWidget
 	GENERATED_BODY()
 public:
 
-	UPROPERTY(BlueprintReadWrite)
-	int32 PreviousScreen = 0;
-
 	UPROPERTY(BlueprintReadOnly)
 	FGameplayTagContainer MainTags;
 
 	UPROPERTY(BlueprintReadOnly)
-	TArray<UPhoenixScreen*> Screens;
+	TMap<FName, UPhoenixScreen*> Screens;
+
+	UFUNCTION(BlueprintCallable)
+	void AddScreen(UPhoenixScreen* Screen);
+
+	UFUNCTION(BlueprintCallable)
+	void ToggleScreen(FName ScreenName);
+
+	UFUNCTION(BlueprintCallable)
+	void CloseScreen(FName ScreenName);
+
+private:
+
+	TArray<FName> ScreenStack;
 };
