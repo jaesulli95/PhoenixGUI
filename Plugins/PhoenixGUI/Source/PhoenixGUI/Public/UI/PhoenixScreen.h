@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Data/EditGuiMode.h"
 #include "UI/PhoenixWindow.h"
+#include "Interfaces/Toggleable.h"
 #include "Data/WidgetLayoutData.h"
 #include "GameplayTagContainer.h"
 #include "PhoenixScreen.generated.h"
@@ -13,10 +14,13 @@
  * 
  */
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FScreenOpenedDelegate);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FScreenClosedDelegate);
+
 class UPhoenixBaseWidget;
 
 UCLASS()
-class PHOENIXGUI_API UPhoenixScreen : public UUserWidget
+class PHOENIXGUI_API UPhoenixScreen : public UUserWidget, public IToggleable
 {
 	GENERATED_BODY()
 
@@ -83,4 +87,10 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	bool AreWindowsOpen();
 
+	//EVENTS
+	UPROPERTY(BlueprintAssignable, BlueprintCallable, VisibleDefaultsOnly)
+	FScreenOpenedDelegate ScreenOpened;
+
+	UPROPERTY(BlueprintAssignable, BlueprintCallable, VisibleDefaultsOnly)
+	FScreenClosedDelegate ScreenClosed;
 };

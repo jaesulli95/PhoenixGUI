@@ -23,16 +23,16 @@ public:
 	FGameplayTagContainer MainTags;
 
 	UPROPERTY(BlueprintReadOnly)
-	TMap<FName, UPhoenixScreen*> Screens;
+	TMap<FName, UPhoenixScreen*> Screens; //Stores References to Screens
 
 	UFUNCTION(BlueprintCallable)
 	void AddScreen(UPhoenixScreen* Screen);
 
 	UFUNCTION(BlueprintCallable)
-	void ToggleScreen(FName ScreenName);
+	void PushScreen(FName ScreenName); //Rename to PushScreen-- layer
 
 	UFUNCTION(BlueprintCallable)
-	void CloseScreen(FName ScreenName);
+	void PopScreen(); //Rename to PopScreen also know as delayering
 
 private:
 
