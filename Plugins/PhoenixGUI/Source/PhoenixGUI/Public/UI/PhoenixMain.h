@@ -34,6 +34,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void PopScreen(); //Rename to PopScreen also know as delayering
 
+	UFUNCTION(BlueprintCallable)
+	void ScreenOpened();
+
+	UFUNCTION(BlueprintCallable)
+	void ScreenClosed();
+
 private:
 
 	TArray<FName> ScreenStack;

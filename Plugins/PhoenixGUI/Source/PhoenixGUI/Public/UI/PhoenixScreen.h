@@ -44,7 +44,7 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category="Data|Widgets")
 	TArray<FName> OpenedWindows;
 
-	UPROPERTY(BlueprintReadOnly, Category="Data")
+	UPROPERTY(BlueprintReadWrite, Category="Data")
 	FGameplayTagContainer ScreenTags;
 
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Data")
