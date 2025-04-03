@@ -44,9 +44,3 @@ void UPhoenixGuiFunctionLibrary::PopScreenFromView(FName ScreenName) {
 	}
 }
 
-void UPhoenixGuiFunctionLibrary::PushScreenWidgetToView(UPhoenixScreen* Screen)
-{
-
-}
-
-

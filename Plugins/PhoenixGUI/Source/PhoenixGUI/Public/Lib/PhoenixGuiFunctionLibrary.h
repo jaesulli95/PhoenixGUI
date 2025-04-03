@@ -18,7 +18,4 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	static void PopScreenFromView(FName ScreenName);
-
-	UFUNCTION(BlueprintCallable)
-	static void PushScreenWidgetToView(class UPhoenixScreen* Screen);
 };
