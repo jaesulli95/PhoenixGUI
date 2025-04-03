@@ -13,9 +13,9 @@ class PHOENIXGUI_API UPhoenixGuiFunctionLibrary : public UBlueprintFunctionLibra
 {
 	GENERATED_BODY()
 public:
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category="PhoenixGui|Library")
 	static void PushScreenToView(FName ScreenName);
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category="PhoenixGui|Library")
 	static void PopScreenFromView(FName ScreenName);
 };

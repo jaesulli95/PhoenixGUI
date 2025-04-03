@@ -68,18 +68,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Screen-Utility")
 	void CloseAllWindows();
 
-	UFUNCTION(BlueprintCallable, Category = "Screen-Utility")
-	void SetEditState(EGuiState NewGuiState);
-
-	UFUNCTION(BlueprintImplementableEvent, Category = "Screen-Utility")
-	void BP_GuiStateChanged(EGuiState State);
-
 	//Get Layout Data of Current Loadout and return. Will be used for saving the Layout Loadout
 	UFUNCTION(BlueprintCallable, Category="Screen-Utility")
 	TMap<FName, FWidgetLayoutData> GetLayoutData(TArray<UPhoenixBaseWidget*> WidgetsToSave);
 
-	UFUNCTION(BlueprintCallable, Category="Screen-Utility")
-	void SetLayoutData(TMap<FName, FWidgetLayoutData> LoadoutLayoutData);
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	TArray< UPhoenixBaseWidget*> GetScreenWidgets();

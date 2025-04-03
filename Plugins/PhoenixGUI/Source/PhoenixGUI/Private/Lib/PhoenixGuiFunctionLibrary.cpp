@@ -26,7 +26,6 @@ void UPhoenixGuiFunctionLibrary::PushScreenToView(FName ScreenName) {
 void UPhoenixGuiFunctionLibrary::PopScreenFromView(FName ScreenName) {
 	UPhoenixMain* MainRef = nullptr;
 
-
 	for (TObjectIterator<UUserWidget> Itr; Itr; ++Itr) {
 		UUserWidget* LiveWidget = *Itr;
 

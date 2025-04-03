@@ -53,14 +53,6 @@ void UPhoenixScreen::CloseAllWindows()
     }
 }
 
-void UPhoenixScreen::SetEditState(EGuiState NewGuiState)
-{
-    if (bIsEditable) {
-        GuiState = NewGuiState;
-        BP_GuiStateChanged(GuiState);
-    }
-}
-
 TMap<FName, FWidgetLayoutData> UPhoenixScreen::GetLayoutData(TArray<UPhoenixBaseWidget*> WidgetsToSave)
 {
     TMap<FName, FWidgetLayoutData> LayoutData;
@@ -71,15 +63,6 @@ TMap<FName, FWidgetLayoutData> UPhoenixScreen::GetLayoutData(TArray<UPhoenixBase
             FWidgetLayoutData(TmpCanvas->GetAnchors(), TmpCanvas->GetPosition(), TmpCanvas->GetAlignment()));
     }
     return LayoutData;
-}
-
-void UPhoenixScreen::SetLayoutData(TMap<FName, FWidgetLayoutData> LoadoutLayoutData)
-{
-    for (const TPair<FName, FWidgetLayoutData> WData : LoadoutLayoutData) {
-        if (PhoenixWidgets.Contains(WData.Key)) {
-            PhoenixWidgets[WData.Key]->ApplyWidgetLayoutData(WData.Value);
-        }
-    }
 }
 
 TArray<UPhoenixBaseWidget*> UPhoenixScreen::GetScreenWidgets()
