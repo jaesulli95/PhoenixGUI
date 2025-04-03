@@ -3,6 +3,7 @@
 
 #include "Lib/PhoenixGuiFunctionLibrary.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
+#include "UObject/UObjectIterator.h"
 #include "UI/PhoenixMain.h"
 
 void UPhoenixGuiFunctionLibrary::PushScreenToView(FName ScreenName) {
@@ -25,7 +26,7 @@ void UPhoenixGuiFunctionLibrary::PushScreenToView(FName ScreenName) {
 
 void UPhoenixGuiFunctionLibrary::PopScreenFromView(FName ScreenName) {
 	UPhoenixMain* MainRef = nullptr;
-
+	
 	for (TObjectIterator<UUserWidget> Itr; Itr; ++Itr) {
 		UUserWidget* LiveWidget = *Itr;
 

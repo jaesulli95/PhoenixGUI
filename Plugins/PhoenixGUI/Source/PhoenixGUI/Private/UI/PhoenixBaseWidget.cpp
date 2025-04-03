@@ -27,7 +27,7 @@ FReply UPhoenixBaseWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, 
 	return FReply::Handled();
 }
 
-void UPhoenixBaseWidget::ApplyWidgetLayoutData(FWidgetLayoutData Data)
+/*void UPhoenixBaseWidget::ApplyWidgetLayoutData(FWidgetLayoutData Data)
 {
 	UCanvasPanelSlot* Canvas = UWidgetLayoutLibrary::SlotAsCanvasSlot(this);
 	if (Canvas) {
@@ -35,4 +35,4 @@ void UPhoenixBaseWidget::ApplyWidgetLayoutData(FWidgetLayoutData Data)
 		Canvas->SetAlignment(Data.Alignment);
 		Canvas->SetPosition(Data.Position);
 	}
-}
+}*/

@@ -73,16 +73,16 @@ public:
 	TMap<FName, FWidgetLayoutData> GetLayoutData(TArray<UPhoenixBaseWidget*> WidgetsToSave);
 
 
-	UFUNCTION(BlueprintCallable, BlueprintPure)
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category="Screen-Utility")
 	TArray< UPhoenixBaseWidget*> GetScreenWidgets();
 
-	UFUNCTION(BlueprintCallable, BlueprintPure)
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Screen-Utility")
 	bool AreWindowsOpen();
 
 	//EVENTS
-	UPROPERTY(BlueprintAssignable, BlueprintCallable, VisibleDefaultsOnly)
+	UPROPERTY(BlueprintAssignable, BlueprintCallable, VisibleDefaultsOnly, Category="Screen|Events")
 	FScreenOpenedDelegate ScreenOpened;
 
-	UPROPERTY(BlueprintAssignable, BlueprintCallable, VisibleDefaultsOnly)
+	UPROPERTY(BlueprintAssignable, BlueprintCallable, VisibleDefaultsOnly, Category="Screen|Events")
 	FScreenClosedDelegate ScreenClosed;
 };
