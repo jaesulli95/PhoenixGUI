@@ -2,16 +2,51 @@
 
 
 #include "Lib/PhoenixGuiFunctionLibrary.h"
+#include "Blueprint/WidgetBlueprintLibrary.h"
+#include "UI/PhoenixMain.h"
 
 void UPhoenixGuiFunctionLibrary::PushScreenToView(FName ScreenName) {
-	UE_LOG(LogTemp, Warning, TEXT("Pushing Widget to Screen"));
+	UPhoenixMain* MainRef = nullptr;
+
+	for (TObjectIterator<UUserWidget> Itr; Itr; ++Itr) {
+		UUserWidget* LiveWidget = *Itr;
+
+		if (LiveWidget->GetClass()->IsChildOf(UPhoenixMain::StaticClass())) {
+			MainRef = Cast<UPhoenixMain>(LiveWidget);
+			break;
+		}
+	}
+
+	if (MainRef) {
+		MainRef->PushScreen(ScreenName);
+	}
+
 }
 
-void UPhoenixGuiFunctionLibrary::PopScreenFromView(FName ScreenName)
-{
+void UPhoenixGuiFunctionLibrary::PopScreenFromView(FName ScreenName) {
+	UPhoenixMain* MainRef = nullptr;
+
+
+	for (TObjectIterator<UUserWidget> Itr; Itr; ++Itr) {
+		UUserWidget* LiveWidget = *Itr;
+
+		if (LiveWidget->GetClass()->IsChildOf(UPhoenixMain::StaticClass())) {
+			MainRef = Cast<UPhoenixMain>(LiveWidget);
+			break;
+		}
+	}
+
+	if (MainRef) {
+		MainRef->PopScreen();
+	}
+	else {
+		UE_LOG(LogTemp, Warning, TEXT("No Phoenix Main Ref"));
+	}
 }
+
 void UPhoenixGuiFunctionLibrary::PushScreenWidgetToView(UPhoenixScreen* Screen)
 {
+
 }
 
 

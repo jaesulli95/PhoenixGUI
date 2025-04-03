@@ -54,10 +54,10 @@ void UPhoenixMain::PopScreen()
 }
 
 //Empty Functions incase they are needed some day
+void UPhoenixMain::ScreenOpened() {
 
-void UPhoenixMain::ScreenOpened()
-{
 }
 
 void UPhoenixMain::ScreenClosed() {
+
 }
