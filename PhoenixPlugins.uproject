@@ -21,6 +21,18 @@
 		{
 			"Name": "UdpMessaging",
 			"Enabled": false
+		},
+		{
+			"Name": "ActorLayerUtilities",
+			"Enabled": false
+		},
+		{
+			"Name": "ActorSequence",
+			"Enabled": false
+		},
+		{
+			"Name": "JsonBlueprintUtilities",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [

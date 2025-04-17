@@ -7,12 +7,18 @@
 #include "UI/PhoenixMain.h"
 
 void UPhoenixGuiFunctionLibrary::PushScreenToView(FName ScreenName) {
+	UWorld* CurrentWorld = GEngine->GameViewport->GetWorld();
+
+	if (!CurrentWorld) {
+		return;
+	}
+
 	UPhoenixMain* MainRef = nullptr;
 
 	for (TObjectIterator<UUserWidget> Itr; Itr; ++Itr) {
 		UUserWidget* LiveWidget = *Itr;
 
-		if (LiveWidget->GetClass()->IsChildOf(UPhoenixMain::StaticClass())) {
+		if ((LiveWidget->GetWorld() == CurrentWorld) && (LiveWidget->GetClass()->IsChildOf(UPhoenixMain::StaticClass()))) {
 			MainRef = Cast<UPhoenixMain>(LiveWidget);
 			break;
 		}
@@ -25,12 +31,18 @@ void UPhoenixGuiFunctionLibrary::PushScreenToView(FName ScreenName) {
 }
 
 void UPhoenixGuiFunctionLibrary::PopScreenFromView(FName ScreenName) {
+	UWorld* CurrentWorld = GEngine->GameViewport->GetWorld();
+
+	if (!CurrentWorld) {
+		return;
+	}
+
 	UPhoenixMain* MainRef = nullptr;
-	
+
 	for (TObjectIterator<UUserWidget> Itr; Itr; ++Itr) {
 		UUserWidget* LiveWidget = *Itr;
 
-		if (LiveWidget->GetClass()->IsChildOf(UPhoenixMain::StaticClass())) {
+		if ((LiveWidget->GetWorld() == CurrentWorld) && (LiveWidget->GetClass()->IsChildOf(UPhoenixMain::StaticClass()))) {
 			MainRef = Cast<UPhoenixMain>(LiveWidget);
 			break;
 		}

@@ -40,7 +40,9 @@ public class PhoenixGUI : ModuleRules
 				"SlateCore",
 				"UMG",
 				"InputCore",
-				"GameplayTags"
+				"GameplayTags",
+				"Json",
+				"JsonUtilities"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

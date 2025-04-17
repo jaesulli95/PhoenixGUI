@@ -34,8 +34,12 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Data")
 	FVector2D ScaleLimits = FVector2D(.5, 2.0);
 	
-	virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category="Utilities")
+	void StartEditWidget();
 
-	/*UFUNCTION(BlueprintCallable)
-	void ApplyWidgetLayoutData(struct FWidgetLayoutData Data);*/
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category="Utilities")
+	void EndEditWidget();
+
+	virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
+	
 };
