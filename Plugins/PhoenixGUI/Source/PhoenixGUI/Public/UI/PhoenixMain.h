@@ -19,6 +19,13 @@ class PHOENIXGUI_API UPhoenixMain : public UUserWidget
 	GENERATED_BODY()
 public:
 
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Data")
+	bool bIsEditable = false;
+
+	UPROPERTY(BlueprintReadOnly,  Category = "Data")
+	bool bIsEditingUI = false;
+
+
 	UPROPERTY(BlueprintReadOnly, Category="Data")
 	TMap<FName, UPhoenixScreen*> Screens; //Stores References to Screens
 
@@ -36,6 +43,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Main|Utility")
 	void ScreenClosed();
+
+	UFUNCTION(BlueprintCallable, Category="Main|Edit|Utility")
+	void SetIsEditing(bool _bIsEditingUI);
 
 private:
 

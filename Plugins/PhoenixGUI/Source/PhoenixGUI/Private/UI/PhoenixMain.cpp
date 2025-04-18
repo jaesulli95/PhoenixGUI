@@ -3,6 +3,8 @@
 
 #include "UI/PhoenixMain.h"
 #include "UI/PhoenixScreen.h"
+#include "Kismet/GameplayStatics.h"
+
 
 void UPhoenixMain::AddScreen(UPhoenixScreen* Screen)
 {
@@ -60,4 +62,21 @@ void UPhoenixMain::ScreenOpened() {
 
 void UPhoenixMain::ScreenClosed() {
 
+}
+
+void UPhoenixMain::SetIsEditing(bool _bIsEditingUI)
+{
+	bIsEditingUI = _bIsEditingUI;
+	APlayerController* controller = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+
+	if (!controller) {
+		return;
+	}
+
+	if (bIsEditingUI) {
+		controller->Tags.Add(FName("EditUI"));
+		return;
+	}
+
+	controller->Tags.Remove(FName("EditUI"));
 }

@@ -18,21 +18,15 @@ FReply UPhoenixBaseWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, 
 		return FReply::Handled();
 	}
 
-	//EDIT DRAG and EDIT_ANCHORS
-
 	APlayerController* Controller = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 	if (Controller) {
-		if ((Controller->Tags.Find("EDIT") != INDEX_NONE) &&
-			UKismetInputLibrary::PointerEvent_IsMouseButtonDown(InMouseEvent, EKeys::LeftMouseButton)) {
-			OnWidgetSelected.Broadcast(this);
-			return FReply::Handled();
-		}
-
-		if (Controller->Tags.Find("EDIT_DRAG") != INDEX_NONE) {
-			UE_LOG(LogTemp, Warning, TEXT("Dragging FIRING"));
+		
+		if ((Controller->Tags.Find("EditUI") != INDEX_NONE)) {
 			FEventReply EventReply = UWidgetBlueprintLibrary::DetectDragIfPressed(InMouseEvent, this, EKeys::LeftMouseButton);
+			OnWidgetSelected.Broadcast(this);
 			return EventReply.NativeReply;
 		}
+	
 	}
 	return FReply::Handled();
 }
