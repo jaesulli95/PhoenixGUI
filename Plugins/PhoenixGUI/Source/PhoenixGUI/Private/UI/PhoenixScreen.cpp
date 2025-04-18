@@ -53,18 +53,6 @@ void UPhoenixScreen::CloseAllWindows()
     }
 }
 
-TMap<FName, FWidgetLayoutData> UPhoenixScreen::GetLayoutData(TArray<UPhoenixBaseWidget*> WidgetsToSave)
-{
-    TMap<FName, FWidgetLayoutData> LayoutData;
-    int32 WidgetsNum = WidgetsToSave.Num();
-    for (int32 i = 0; i < WidgetsNum; i++) {
-        UCanvasPanelSlot* TmpCanvas = UWidgetLayoutLibrary::SlotAsCanvasSlot(WidgetsToSave[i]);
-        LayoutData.Add(WidgetsToSave[i]->Name,
-            FWidgetLayoutData(TmpCanvas->GetAnchors(), TmpCanvas->GetPosition(), TmpCanvas->GetAlignment()));
-    }
-    return LayoutData;
-}
-
 TArray<UPhoenixBaseWidget*> UPhoenixScreen::GetScreenWidgets()
 {
     TArray<UPhoenixBaseWidget*> WidgetsOnScreen;

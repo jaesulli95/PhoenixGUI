@@ -3,10 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Data/EditGuiMode.h"
 #include "UI/PhoenixWindow.h"
 #include "Interfaces/Toggleable.h"
-#include "Data/WidgetLayoutData.h"
 #include "GameplayTagContainer.h"
 #include "PhoenixScreen.generated.h"
 
@@ -47,12 +45,6 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category="Data")
 	FGameplayTagContainer ScreenTags;
 
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Data")
-	EEditGuiMode GuiMode = EEditGuiMode::EGM_Anchor; // By Default Use Anchor
-
-	UPROPERTY(BlueprintReadOnly, Category = "Data")
-	EGuiState GuiState = EGuiState::EGS_Active;
-
 	UFUNCTION(BlueprintPure, BlueprintCallable, Category="Screen-Utility")
 	UPhoenixWindow* GetWindow(FName WindowLookupName);
 
@@ -67,10 +59,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Screen-Utility")
 	void CloseAllWindows();
-
-	//Get Layout Data of Current Loadout and return. Will be used for saving the Layout Loadout
-	UFUNCTION(BlueprintCallable, Category="Screen-Utility")
-	TMap<FName, FWidgetLayoutData> GetLayoutData(TArray<UPhoenixBaseWidget*> WidgetsToSave);
 
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category="Screen-Utility")
